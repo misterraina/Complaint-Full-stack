@@ -59,16 +59,6 @@ export const updateComplaint = async (req, res) => {
     const { role, id: userId } = req.user;
     const updates = req.body;
 
-       // Send email notification on status update
-    if (updates.status) {
-      await transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: process.env.ADMIN_EMAIL,
-        subject: 'Complaint Status Updated',
-        text: `The status of complaint titled "${updatedComplaint.title}" has been updated to "${updatedComplaint.status}".`
-      });
-    }
-
     const complaint = await Complaint.findById(complaintId);
 
     if (!complaint) {
@@ -81,6 +71,16 @@ export const updateComplaint = async (req, res) => {
 
     Object.assign(complaint, updates);
     await complaint.save();
+
+        // Send email notification on status update
+    if (updates.status) {
+      await transporter.sendMail({
+        from: process.env.EMAIL_USER,
+        to: process.env.ADMIN_EMAIL,
+        subject: 'Complaint Status Updated',
+        text: `The status of complaint titled "${complaint.title}" has been updated to "${complaint.status}".`
+      });
+    }
 
     res.status(200).json(complaint);
   } catch (error) {
