@@ -19,7 +19,7 @@ const ComplaintTable = () => {
         return;  // You can redirect the user to login or show an error
       }
 
-      const response = await fetch('http://localhost:5000/complaints', {
+      const response = await fetch('https://complaint-full-stack.vercel.app/complaints', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -43,7 +43,7 @@ const ComplaintTable = () => {
   // Update status of the complaint
   const handleStatusChange = async (complaintId, status) => {
     const token = Cookies.get('token'); // Get the token from cookies
-    const response = await fetch(`http://localhost:5000/complaints/${complaintId}`, {
+    const response = await fetch(`https://complaint-full-stack.vercel.app/complaints/${complaintId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',

@@ -17,7 +17,7 @@ const UserDashboard = () => {
       if (!token) return;
 
       try {
-        const response = await fetch("http://localhost:5000/complaints", {
+        const response = await fetch("https://complaint-full-stack.vercel.app/complaints", {
           method: "GET",
           headers: {
             Authorization: `Bearer ${token}`,
@@ -49,7 +49,7 @@ const UserDashboard = () => {
     if (!token) return;
 
     try {
-      const response = await fetch(`http://localhost:5000/complaints/${id}`, {
+      const response = await fetch(`https://complaint-full-stack.vercel.app/complaints/${id}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -83,8 +83,8 @@ const UserDashboard = () => {
       const updatedFormData = isEditing ? { ...formData, _id: selectedComplaint._id } : formData;
 
       const url = isEditing
-        ? `http://localhost:5000/complaints/${selectedComplaint._id}`
-        : "http://localhost:5000/complaints";
+        ? `https://complaint-full-stack.vercel.app/complaints/${selectedComplaint._id}`
+        : "https://complaint-full-stack.vercel.app/complaints";
 
       const method = isEditing ? "PUT" : "POST";
 

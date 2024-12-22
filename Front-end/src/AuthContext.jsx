@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
       const token = Cookies.get("token");
       if (token) {
         try {
-          const response = await fetch("http://localhost:5000/users/verify-token", {
+          const response = await fetch("https://complaint-full-stack.vercel.app/users/verify-token", {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` },
           });
@@ -52,7 +52,7 @@ export const AuthProvider = ({ children }) => {
   // Logout function
   const logout = async () => {
     try {
-      await fetch("http://localhost:5000/users/logout", {
+      await fetch("https://complaint-full-stack.vercel.app/users/logout", {
         method: "POST",
         headers: { Authorization: `Bearer ${Cookies.get('token')}` },
         credentials: "include",

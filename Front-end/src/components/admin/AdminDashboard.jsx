@@ -1,5 +1,6 @@
 import React from 'react';
 import ComplaintTable from './ComplaintTable';
+import { useAuth } from "../../AuthContext"; 
 
 const AdminDashboard = () => {
   return (
@@ -9,5 +10,10 @@ const AdminDashboard = () => {
     </div>
   );
 };
+
+  // Handle logout
+  const handleLogout = () => {
+    logout();  // Call the logout function from context
+  };
 
 export default AdminDashboard;

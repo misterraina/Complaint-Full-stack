@@ -10,7 +10,7 @@ app.use(express.json());
 
 // Enable CORS
 app.use(cors({
-  origin: 'http://localhost:5173', // Allow requests from your frontend
+  origin: 'https://complaint-full-stack-xg4y.vercel.app/', // Allow requests from your frontend
   credentials: true, // Allow cookies to be sent
 }));
 
