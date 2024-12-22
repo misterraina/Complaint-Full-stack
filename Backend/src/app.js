@@ -17,5 +17,7 @@ app.use(cors({
 // Routes
 app.use('/complaints', complaintsRoutes);
 app.use('/users', userRoutes);
-
+app.use('/', (req, res) => {
+  res.send('hello world');
+});
 export default app;
